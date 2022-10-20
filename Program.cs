@@ -14,8 +14,8 @@ bool Palindrom(int n)
 }
 
 Console.Write("Push 5digit number  ");
-int day = Convert.ToInt32(Console.ReadLine());
-bool res = Palindrom(day);
+int num = Convert.ToInt32(Console.ReadLine());
+bool res = Palindrom(num);
 Console.Write("Is it a palindrom?  " + res);
 */
 
