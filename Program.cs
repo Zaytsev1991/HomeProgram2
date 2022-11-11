@@ -1,40 +1,158 @@
-﻿//Задача 25: Напишите цикл, который принимает на вход два числа (A и B) и возводит число A в натуральную степень B.
+﻿//Задача 34
+//Задайте массив заполненный случайными положительными трёхзначными числами.
+//Напишите программу, которая покажет количество чётных чисел в массиве.
 /*
-Console.Write("number A = ");
-int a = Convert.ToInt32(Console.ReadLine());
-
-Console.Write("number B = ");
-int b = Convert.ToInt32(Console.ReadLine());
-
-int current = 1;
-int a1 = a;
-
-while(current < b)
+int[] CreateRandomArray(int size)
 {
-    a *= a1;
-    current++;
+    int[] array = new int[size];
+
+    for(int i = 0; i < size; i++)
+    {
+        array[i] = new Random().Next(100, 1000);
+    }
+    return array;
 }
 
-Console.WriteLine("Result = "+ a);
+void ShowArray(int[] array)
+{
+    for(int i = 0; i < array.Length; i++)
+    {
+        Console.Write(array[i] + " ");
+    }
+    Console.WriteLine();
+}
 
+int Quant(int[] array)
+{
+    int current = 0;
+    for(int i = 0; i < array.Length; i++)
+        if(array[i] % 2 == 0)
+        {
+            current ++;
+        }
+        return current;
+}
+
+Console.Write("number of elements = ");
+int n = Convert.ToInt32(Console.ReadLine());
+int[] myArray = CreateRandomArray(n);
+ShowArray(myArray);
+int quantity = Quant(myArray);
+Console.WriteLine("Quantity of even numbers = " + quantity);
 */
 
-
-//Задача 27: Напишите программу, которая принимает на вход число и выдаёт сумму цифр в числе.
+//Задача 36
+//Задайте одномерный массив, заполненный случайными числами. 
+//Найдите сумму элементов, стоящих на нечётных позициях.
 /*
-int Quant(int number)
+int[] CreateRandomArray(int size, int min, int max)
 {
-    int sum = 0;
-    while(number != 0)
+    int[] array = new int[size];
+
+    for(int i = 0; i < size; i++)
     {
-        sum += number % 10;
-        number = number / 10;
+        array[i] = new Random().Next(min, max + 1);
     }
-    return sum;
+    return array;
 }
 
-Console.Write("number = ");
-int num = Convert.ToInt32(Console.ReadLine());
+void ShowArray(int[] array)
+{
+    for(int i = 0; i < array.Length; i++)
+    {
+        Console.Write(array[i] + " ");
+    }
+    Console.WriteLine();
+}
 
-Console.WriteLine($"quantity = {Quant(num)}");
+int Sum(int[] array)
+{
+    int summa = 0;
+    for(int i = 1; i < array.Length; i = i + 2)
+    {
+        summa = summa + array[i];
+    }
+    return summa;
+}
+
+Console.Write("number of elements = ");
+int n = Convert.ToInt32(Console.ReadLine());
+Console.Write("input min ");
+int min = Convert.ToInt32(Console.ReadLine());
+Console.Write("input max ");
+int max = Convert.ToInt32(Console.ReadLine());
+
+int[] myArray = CreateRandomArray(n, min, max);
+ShowArray(myArray);
+
+int result = Sum(myArray);
+Console.WriteLine("Sum of elements = " + result);
+*/
+
+//Задача 38
+//Задайте массив вещественных чисел.
+//Найдите разницу между максимальным и минимальным элементов массива.
+/*
+double[] CreateRandomArray(int size, int min, int max)
+{
+    double[] array = new double[size];
+
+    for(int i = 0; i < size; i++)
+    {
+        array[i] = new Random().NextDouble() + new Random().Next(min, max + 1);
+    }
+    return array;
+}
+
+void ShowArray(double[] array)
+{
+    for(int i = 0; i < array.Length; i++)
+    {
+        Console.Write(Math.Round(array[i],3) + " ");
+    }
+    Console.WriteLine();
+}
+
+double Max(double[] array)
+{
+    double max = array[0];
+    for(int i = 1; i < array.Length; i ++)
+    {
+        if(array[i] > max)
+        {
+            max = array[i];
+        }
+    }
+    return max;
+}
+
+double Min(double[] array)
+{
+    double min = array[0];
+    for(int i = 1; i < array.Length; i ++)
+    {
+        if(array[i] < min)
+        {
+            min = array[i];
+        }
+    }
+    return min;
+}
+Console.Write("number of elements = ");
+int n = Convert.ToInt32(Console.ReadLine());
+Console.Write("input min border ");
+int minBorder = Convert.ToInt32(Console.ReadLine());
+Console.Write("input max border ");
+int maxBorder = Convert.ToInt32(Console.ReadLine());
+
+double[] myArray = CreateRandomArray(n, minBorder, maxBorder);
+ShowArray(myArray);
+
+double max = Max(myArray);
+Console.WriteLine("max = " + Math.Round(max,3));
+
+double min = Min(myArray);
+Console.WriteLine("min = " + Math.Round(min,3));
+
+Console.WriteLine("difference = " + Math.Round(max - min,3));
 */
