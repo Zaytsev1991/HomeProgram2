@@ -1,14 +1,13 @@
-﻿//Задача 34
-//Задайте массив заполненный случайными положительными трёхзначными числами.
-//Напишите программу, которая покажет количество чётных чисел в массиве.
+﻿//Задача 41
+//Пользователь вводит с клавиатуры M чисел. Посчитайте, сколько чисел больше 0 ввёл пользователь.
+
 /*
-int[] CreateRandomArray(int size)
+int[] CreateArray(int size)
 {
     int[] array = new int[size];
-
     for(int i = 0; i < size; i++)
     {
-        array[i] = new Random().Next(100, 1000);
+        array[i] = Convert.ToInt32(Console.ReadLine());
     }
     return array;
 }
@@ -22,137 +21,67 @@ void ShowArray(int[] array)
     Console.WriteLine();
 }
 
-int Quant(int[] array)
+int positiveElements(int[] array)
 {
-    int current = 0;
+    int quantity = 0;
     for(int i = 0; i < array.Length; i++)
-        if(array[i] % 2 == 0)
+    {
+        if(array[i] > 0)
         {
-            current ++;
+            quantity++;
         }
-        return current;
+    }
+    return quantity;
 }
 
-Console.Write("number of elements = ");
-int n = Convert.ToInt32(Console.ReadLine());
-int[] myArray = CreateRandomArray(n);
+Console.Write("m = ");
+int m = Convert.ToInt32(Console.ReadLine());
+
+int[] myArray = CreateArray(m);
+Console.Write("Your array ");
 ShowArray(myArray);
-int quantity = Quant(myArray);
-Console.WriteLine("Quantity of even numbers = " + quantity);
+
+int quant = positiveElements(myArray);
+Console.WriteLine("Number of positive elements = " + quant);
 */
 
-//Задача 36
-//Задайте одномерный массив, заполненный случайными числами. 
-//Найдите сумму элементов, стоящих на нечётных позициях.
+//Задача 43
+//Напишите программу, которая найдёт точку пересечения двух прямых, заданных уравнениями 
+//y = k1 * x + b1, y = k2 * x + b2; значения b1, k1, b2 и k2 задаются пользователем.
+
 /*
-int[] CreateRandomArray(int size, int min, int max)
-{
-    int[] array = new int[size];
+Console.WriteLine("Enter a parameters of the lines type of y = k*x + b ");
 
-    for(int i = 0; i < size; i++)
+void LinesIntersection(double k1, double b1, double k2, double b2)
+{
+    if(k1 == k2 && b1 == b2)
     {
-        array[i] = new Random().Next(min, max + 1);
+        Console.WriteLine("Lines match");
     }
-    return array;
-}
-
-void ShowArray(int[] array)
-{
-    for(int i = 0; i < array.Length; i++)
+    else
     {
-        Console.Write(array[i] + " ");
-    }
-    Console.WriteLine();
-}
-
-int Sum(int[] array)
-{
-    int summa = 0;
-    for(int i = 1; i < array.Length; i = i + 2)
-    {
-        summa = summa + array[i];
-    }
-    return summa;
-}
-
-Console.Write("number of elements = ");
-int n = Convert.ToInt32(Console.ReadLine());
-Console.Write("input min ");
-int min = Convert.ToInt32(Console.ReadLine());
-Console.Write("input max ");
-int max = Convert.ToInt32(Console.ReadLine());
-
-int[] myArray = CreateRandomArray(n, min, max);
-ShowArray(myArray);
-
-int result = Sum(myArray);
-Console.WriteLine("Sum of elements = " + result);
-*/
-
-//Задача 38
-//Задайте массив вещественных чисел.
-//Найдите разницу между максимальным и минимальным элементов массива.
-/*
-double[] CreateRandomArray(int size, int min, int max)
-{
-    double[] array = new double[size];
-
-    for(int i = 0; i < size; i++)
-    {
-        array[i] = new Random().NextDouble() + new Random().Next(min, max + 1);
-    }
-    return array;
-}
-
-void ShowArray(double[] array)
-{
-    for(int i = 0; i < array.Length; i++)
-    {
-        Console.Write(Math.Round(array[i],3) + " ");
-    }
-    Console.WriteLine();
-}
-
-double Max(double[] array)
-{
-    double max = array[0];
-    for(int i = 1; i < array.Length; i ++)
-    {
-        if(array[i] > max)
+        if(k1 == k2)
         {
-            max = array[i];
+            Console.WriteLine("Lines parallel");
+        }
+        else
+        {
+            double x = (b2 - b1)/(k1 - k2);
+            double y = k1 * x + b1;
+            Console.WriteLine("Coordinate of the intersection point");
+            Console.WriteLine("x = " + Math.Round(x,3) + " y = " + Math.Round(y,3));
         }
     }
-    return max;
-}
+} 
 
-double Min(double[] array)
-{
-    double min = array[0];
-    for(int i = 1; i < array.Length; i ++)
-    {
-        if(array[i] < min)
-        {
-            min = array[i];
-        }
-    }
-    return min;
-}
-Console.Write("number of elements = ");
-int n = Convert.ToInt32(Console.ReadLine());
-Console.Write("input min border ");
-int minBorder = Convert.ToInt32(Console.ReadLine());
-Console.Write("input max border ");
-int maxBorder = Convert.ToInt32(Console.ReadLine());
+Console.Write("k1 = ");
+double k1 = Convert.ToInt32(Console.ReadLine());
+Console.Write("b1 = ");
+double b1 = Convert.ToInt32(Console.ReadLine());
+Console.Write("k2 = ");
+double k2 = Convert.ToInt32(Console.ReadLine());
+Console.Write("b2 = ");
+double b2 = Convert.ToInt32(Console.ReadLine());
 
-double[] myArray = CreateRandomArray(n, minBorder, maxBorder);
-ShowArray(myArray);
-
-double max = Max(myArray);
-Console.WriteLine("max = " + Math.Round(max,3));
-
-double min = Min(myArray);
-Console.WriteLine("min = " + Math.Round(min,3));
-
-Console.WriteLine("difference = " + Math.Round(max - min,3));
+LinesIntersection(k1, b1, k2, b2);
 */
