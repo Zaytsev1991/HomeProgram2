@@ -1,87 +1,165 @@
-﻿//Задача 41
-//Пользователь вводит с клавиатуры M чисел. Посчитайте, сколько чисел больше 0 ввёл пользователь.
-
+﻿//Задача 47. 
+//Задайте двумерный массив размером m×n, заполненный случайными вещественными числами.
 /*
-int[] CreateArray(int size)
+double[,] CreateRandom2dArray(int rows, int columns, int minValue, int maxValue)
 {
-    int[] array = new int[size];
-    for(int i = 0; i < size; i++)
+    double[,] array = new double[rows, columns];
+    for(int i = 0; i < rows; i++)
     {
-        array[i] = Convert.ToInt32(Console.ReadLine());
+        for(int j = 0; j < columns; j++)
+        {
+            array[i,j] = new Random().NextDouble() + new Random().Next(minValue, maxValue + 1);
+        }
     }
     return array;
 }
 
-void ShowArray(int[] array)
+void Show2dArray(double[,] array)
+{
+    for(int i = 0; i < array.GetLength(0); i++)
+    {
+        for(int j = 0; j < array.GetLength(1); j++)
+        {
+            Console.Write(Math.Round(array[i,j],3) + " ");
+        }
+        Console.WriteLine();
+    }
+}
+
+Console.Write("Number rows = ");
+int m = Convert.ToInt32(Console.ReadLine());
+Console.Write("Number columns = ");
+int n = Convert.ToInt32(Console.ReadLine());
+Console.Write("Min value = ");
+int min = Convert.ToInt32(Console.ReadLine());
+Console.Write("Max value = ");
+int max = Convert.ToInt32(Console.ReadLine());
+
+double[,] myArray = CreateRandom2dArray(m, n, min, max);
+Show2dArray(myArray);
+*/
+
+//Задача 50. 
+//Напишите программу, которая на вход принимает позиции элемента в двумерном массиве, 
+//и возвращает значение этого элемента или же указание, что такого элемента нет.
+/*
+int[,] CreateRandom2dArray(int rows, int columns, int minValue, int maxValue)
+{
+    int[,] array = new int[rows, columns];
+    for(int i = 0; i < rows; i++)
+    {
+        for(int j = 0; j < columns; j++)
+        {
+            array[i,j] = new Random().Next(minValue, maxValue + 1);
+        }
+    }
+    return array;
+}
+
+void Show2dArray(int[,] array)
+{
+    for(int i = 0; i < array.GetLength(0); i++)
+    {
+        for(int j = 0; j < array.GetLength(1); j++)
+        {
+            Console.Write(array[i,j] + " ");
+        }
+        Console.WriteLine();
+    }
+}
+
+void Position(int[,] array, int posRow, int posColumn)
+{
+    if(posRow < array.GetLength(0) && posColumn < array.GetLength(1))
+    {
+        Console.WriteLine("Element = " + array[posRow,posColumn]);
+    }
+    else
+    {
+        Console.WriteLine("This element does not exist");
+    }
+}
+
+Console.Write("Number rows = ");
+int m = Convert.ToInt32(Console.ReadLine());
+Console.Write("Number columns = ");
+int n = Convert.ToInt32(Console.ReadLine());
+Console.Write("Min value = ");
+int min = Convert.ToInt32(Console.ReadLine());
+Console.Write("Max value = ");
+int max = Convert.ToInt32(Console.ReadLine());
+
+int[,] myArray = CreateRandom2dArray(m, n, min, max);
+Show2dArray(myArray);
+
+Console.Write("Input position of row = ");
+int row = Convert.ToInt32(Console.ReadLine());
+Console.Write("Input position of column = ");
+int column = Convert.ToInt32(Console.ReadLine());
+Position(myArray, row, column);
+*/
+
+//Задача 52. 
+//Задайте двумерный массив из целых чисел. Найдите среднее арифметическое элементов в каждом столбце.
+/*
+double[,] CreateRandom2dArray(int rows, int columns, int minValue, int maxValue)
+{
+    double[,] array = new double[rows, columns];
+    for(int i = 0; i < rows; i++)
+    {
+        for(int j = 0; j < columns; j++)
+        {
+            array[i,j] = new Random().Next(minValue, maxValue + 1);
+        }
+    }
+    return array;
+}
+
+void Show2dArray(double[,] array)
+{
+    for(int i = 0; i < array.GetLength(0); i++)
+    {
+        for(int j = 0; j < array.GetLength(1); j++)
+        {
+            Console.Write(array[i,j] + " ");
+        }
+        Console.WriteLine();
+    }
+}
+
+double[] AverRes(double[,] array)
+{
+    double[] arraydouble = new double[array.GetLength(1)];
+    for(int j = 0; j < array.GetLength(1); j++)
+    {
+        for(int i = 0; i < array.GetLength(0); i++)
+        {
+            arraydouble[j] = array[i,j]/array.GetLength(0) + arraydouble[j];
+        }
+    }
+    return arraydouble;
+}
+
+void ShowArray(double[] array)
 {
     for(int i = 0; i < array.Length; i++)
     {
-        Console.Write(array[i] + " ");
+        Console.Write(Math.Round(array[i],3) + " ");
     }
     Console.WriteLine();
 }
 
-int positiveElements(int[] array)
-{
-    int quantity = 0;
-    for(int i = 0; i < array.Length; i++)
-    {
-        if(array[i] > 0)
-        {
-            quantity++;
-        }
-    }
-    return quantity;
-}
-
-Console.Write("m = ");
+Console.Write("Number rows = ");
 int m = Convert.ToInt32(Console.ReadLine());
+Console.Write("Number columns = ");
+int n = Convert.ToInt32(Console.ReadLine());
+Console.Write("Min value = ");
+int min = Convert.ToInt32(Console.ReadLine());
+Console.Write("Max value = ");
+int max = Convert.ToInt32(Console.ReadLine());
 
-int[] myArray = CreateArray(m);
-Console.Write("Your array ");
-ShowArray(myArray);
-
-int quant = positiveElements(myArray);
-Console.WriteLine("Number of positive elements = " + quant);
-*/
-
-//Задача 43
-//Напишите программу, которая найдёт точку пересечения двух прямых, заданных уравнениями 
-//y = k1 * x + b1, y = k2 * x + b2; значения b1, k1, b2 и k2 задаются пользователем.
-
-/*
-Console.WriteLine("Enter a parameters of the lines type of y = k*x + b ");
-
-void LinesIntersection(double k1, double b1, double k2, double b2)
-{
-    if(k1 == k2 && b1 == b2)
-    {
-        Console.WriteLine("Lines match");
-    }
-    else
-    {
-        if(k1 == k2)
-        {
-            Console.WriteLine("Lines parallel");
-        }
-        else
-        {
-            double x = (b2 - b1)/(k1 - k2);
-            double y = k1 * x + b1;
-            Console.WriteLine("Coordinate of the intersection point");
-            Console.WriteLine("x = " + Math.Round(x,3) + " y = " + Math.Round(y,3));
-        }
-    }
-} 
-
-Console.Write("k1 = ");
-double k1 = Convert.ToInt32(Console.ReadLine());
-Console.Write("b1 = ");
-double b1 = Convert.ToInt32(Console.ReadLine());
-Console.Write("k2 = ");
-double k2 = Convert.ToInt32(Console.ReadLine());
-Console.Write("b2 = ");
-double b2 = Convert.ToInt32(Console.ReadLine());
-
-LinesIntersection(k1, b1, k2, b2);
+double[,] myArray = CreateRandom2dArray(m, n, min, max);
+Show2dArray(myArray);
+double[] myDoubleArray = AverRes(myArray);
+ShowArray(myDoubleArray);
 */
