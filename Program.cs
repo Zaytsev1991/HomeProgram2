@@ -222,10 +222,10 @@ Show2dArray(myArray3);
 // Напишите программу, которая будет построчно выводить массив, добавляя индексы каждого элемента.
 
 /*
-int[] CreateNoReplayArray(int min, int lenght)          // Данный метод если честно пришлось искать,                                                     
+int[] CreateNoReplayArray(int min, int lenght)          // Данный метод если честно пришлось искать (225 - 245),                                                     
 {                                                       // сам не смог придумать как создать
-    int random = new Random().Next(min, min + lenght);  // неповторяющийся поэлементно массив. Но разобрался в нем от и до!
-    int[] array = new int[lenght];
+    int random = new Random().Next(min, min + lenght);  // неповторяющийся поэлементно одномерный массив. Но разобрался в нем от и до!
+    int[] array = new int[lenght];                      // Всё остальное сам
     for (int i = 0; i < lenght; i++)
     {
         bool NoReplay;
